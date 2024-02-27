@@ -4,5 +4,6 @@
 
 ## How to start
 
-1. `npm install`
-2. `node src/index.js`
+1. Add `DISCORD_TOKEN` inside of the .env file
+2. `npm install`
+3. `node src/index.js`
