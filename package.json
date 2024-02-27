@@ -1,0 +1,23 @@
+{
+  "name": "andi-gpt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dfusic/andi-gpt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dfusic/andi-gpt/issues"
+  },
+  "homepage": "https://github.com/dfusic/andi-gpt#readme",
+  "dependencies": {
+    "discord.js": "^14.14.1"
+  }
+}
