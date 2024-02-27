@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Client, IntentsBitField } = require("discord.js");
+const { Client, IntentsBitField, SlashCommandBuilder } = require("discord.js");
 
 const client = new Client({
   intents: [
@@ -9,6 +9,35 @@ const client = new Client({
     IntentsBitField.Flags.GuildMessageReactions,
     IntentsBitField.Flags.MessageContent,
   ],
+});
+
+client.on("ready", (x) => {
+  const donacijaCommand = new SlashCommandBuilder()
+    .setName("donacija")
+    .addNumberOption((option) =>
+      option
+        .setName("ruze")
+        .setDescription("The input to echo back")
+        .setRequired(true)
+    )
+    .setDescription("DONIRAJTE ZA STRUJU LJUUUDIII!");
+
+  client.application.commands.create(donacijaCommand);
+});
+
+client.on("interactionCreate", (interaction) => {
+  if (!interaction.isChatInputCommand()) return;
+
+  if (interaction.commandName === "donacija") {
+    const donoQuantity = interaction.options.get("ruze");
+    interaction.reply(
+      `JOOOJ AA KAJ SI SE KROSIIL ${
+        interaction.member.nickname ||
+        interaction.user.globalName ||
+        interaction.user.username
+      }. FALA TI BRAT MOI NA ${donoQuantity.value} RUŽII!!`
+    );
+  }
 });
 
 client.on("messageReactionAdd", async (reaction, user) => {
@@ -46,6 +75,4 @@ client.on("messageCreate", (message) => {
   }
 });
 
-client.login(
-  "MTIxMjA2NTkzMDk3MzAyNDMwNg.Gm4XFn._XGI55mkmEqsXBdA1Ga8gTvKjaqWt3d8QKvwgI"
-);
+client.login("token");
