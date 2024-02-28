@@ -4,6 +4,7 @@ import donacijaCommand from "./donacija.js";
 import tiktokCommand from "./tiktok.js";
 import pesmaCommand from "./pesma.js";
 import komandeCommand from "./komande.js";
+import blagoslovCommand from "./blagoslov.js";
 
 export {
   severCommand,
@@ -12,4 +13,5 @@ export {
   tiktokCommand,
   pesmaCommand,
   komandeCommand,
+  blagoslovCommand,
 };

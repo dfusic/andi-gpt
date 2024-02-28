@@ -12,6 +12,7 @@ import {
   tiktokCommand,
   pesmaCommand,
   komandeCommand,
+  blagoslovCommand,
 } from "./commands/index.js";
 
 const client = new Client({
@@ -32,6 +33,7 @@ client.on("ready", (x) => {
   client.application.commands.create(tiktokCommand);
   client.application.commands.create(severCommand);
   client.application.commands.create(komandeCommand);
+  client.application.commands.create(blagoslovCommand);
 });
 
 client.on("interactionCreate", (interaction) => {
@@ -69,9 +71,25 @@ client.on("interactionCreate", (interaction) => {
     case "komande":
       const message = codeBlock(
         "",
-        "/pesma - dobiš pesmu lepu\n/slika - dobiš moju sliku\n/sever - sever brat moj najači\n/tiktok - zaprati me brat\n/donacija - donirajte judi"
+        "/pesma - dobiš pesmu lepu\n/slika - dobiš moju sliku\n/sever - sever brat moj najači\n/tiktok - zaprati me brat\n/donacija - donirajte judi\n/blagoslov - JEDNOJ OSOBI BUM ZAŽELEL ZDRAVLJE, VESELJE I SVEGA KAJ MU TREBA"
       );
       interaction.reply(message);
+    case "blagoslov":
+      async function fetchRandom() {
+        const randomMember = await (
+          await interaction.guild.members.fetch()
+        ).random();
+
+        console.log(randomMember);
+
+        interaction.reply(
+          `BOG TI DAL ZDRAVLJA I SREČE, ZAČAS! <@${randomMember.user.id}>`
+        );
+      }
+
+      fetchRandom();
+
+      break;
   }
 });
 
