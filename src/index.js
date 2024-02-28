@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { Client, IntentsBitField, SlashCommandBuilder } from "discord.js";
+import { Client, IntentsBitField, codeBlock } from "discord.js";
 import { songs } from "./assets/songs.js";
 import { images } from "./assets/images.js";
 
@@ -11,6 +11,7 @@ import {
   donacijaCommand,
   tiktokCommand,
   pesmaCommand,
+  komandeCommand,
 } from "./commands/index.js";
 
 const client = new Client({
@@ -30,6 +31,7 @@ client.on("ready", (x) => {
   client.application.commands.create(slikaCommand);
   client.application.commands.create(tiktokCommand);
   client.application.commands.create(severCommand);
+  client.application.commands.create(komandeCommand);
 });
 
 client.on("interactionCreate", (interaction) => {
@@ -64,6 +66,12 @@ client.on("interactionCreate", (interaction) => {
     case "sever":
       interaction.reply(`MOJ BRAT SEVER NAJAČI https://imgur.com/BqAUgS0`);
       break;
+    case "komande":
+      const message = codeBlock(
+        "",
+        "/pesma - dobiš pesmu lepu\n/slika - dobiš moju sliku\n/sever - sever brat moj najači\n/tiktok - zaprati me brat\n/donacija - donirajte judi"
+      );
+      interaction.reply(message);
   }
 });
 
