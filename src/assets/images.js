@@ -15,4 +15,4 @@ const images = [
   "https://scontent.fzag1-2.fna.fbcdn.net/v/t39.30808-6/328251679_527683902531577_4377048238949641438_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=Vq7scdPcZ5sAX8nLVRE&_nc_ht=scontent.fzag1-2.fna&oh=00_AfBovXnahc8z6EPWE0tTStsO6nZQa8R52ISKwXXWjeKI5A&oe=65E38958",
 ];
 
-exports.images = images;
+export { images };

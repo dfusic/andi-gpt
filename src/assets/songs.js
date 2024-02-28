@@ -1,4 +1,4 @@
-const songs = [
+export const songs = [
   "Nataša Matić - Šampanjac - (Audio 2012)",
   "KISMI-MILIONERCE",
   "Koki Burdalic - ARMANI",
@@ -147,5 +147,3 @@ const songs = [
   "Sandu Ciorba - Pe cimpoi",
   "Sorina - Ciupi Ciupi",
 ];
-
-exports.songs = songs;
