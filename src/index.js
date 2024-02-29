@@ -1,8 +1,10 @@
 import "dotenv/config";
 import { Client, IntentsBitField, codeBlock } from "discord.js";
+import { ChatGPTClient } from "discordjs-chatgpt";
 import { songs } from "./assets/songs.js";
 import { images } from "./assets/images.js";
 
+import prePrompt from "./assets/gptPrePrompt.js";
 // commands
 
 import {
@@ -13,7 +15,12 @@ import {
   pesmaCommand,
   komandeCommand,
   blagoslovCommand,
+  gptCommand,
 } from "./commands/index.js";
+
+const chatgpt = new ChatGPTClient(
+  "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"
+);
 
 const client = new Client({
   intents: [
@@ -26,7 +33,7 @@ const client = new Client({
 });
 
 client.on("ready", (x) => {
-  console.log("working");
+  console.log("ready");
   client.application.commands.create(donacijaCommand);
   client.application.commands.create(pesmaCommand);
   client.application.commands.create(slikaCommand);
@@ -34,6 +41,7 @@ client.on("ready", (x) => {
   client.application.commands.create(severCommand);
   client.application.commands.create(komandeCommand);
   client.application.commands.create(blagoslovCommand);
+  client.application.commands.create(gptCommand);
 });
 
 client.on("interactionCreate", (interaction) => {
@@ -80,8 +88,6 @@ client.on("interactionCreate", (interaction) => {
           await interaction.guild.members.fetch()
         ).random();
 
-        console.log(randomMember);
-
         interaction.reply(
           `BOG TI DAL ZDRAVLJA I SREČE, ZAČAS! <@${randomMember.user.id}>`
         );
@@ -89,6 +95,17 @@ client.on("interactionCreate", (interaction) => {
 
       fetchRandom();
 
+      break;
+    case "gpt":
+      async function requestGpt() {
+        const msg = interaction.options.getString("pitanje", true);
+        await chatgpt.chatInteraction(
+          interaction,
+          `${prePrompt}. Pitanje: ${msg}`
+        );
+      }
+
+      requestGpt();
       break;
   }
 });

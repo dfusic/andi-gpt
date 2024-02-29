@@ -5,6 +5,7 @@ import tiktokCommand from "./tiktok.js";
 import pesmaCommand from "./pesma.js";
 import komandeCommand from "./komande.js";
 import blagoslovCommand from "./blagoslov.js";
+import gptCommand from "./gpt.js";
 
 export {
   severCommand,
@@ -14,4 +15,5 @@ export {
   pesmaCommand,
   komandeCommand,
   blagoslovCommand,
+  gptCommand,
 };
